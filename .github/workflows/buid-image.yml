@@ -11,7 +11,7 @@ on:
           required: false
 
 env:
-    DOCKER_IMAGE_NAME: sheriffexcel/signoz-react
+    DOCKER_IMAGE_NAME: sheriffexcel/signoz-app
 
 jobs:
 
