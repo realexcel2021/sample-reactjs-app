@@ -16,7 +16,7 @@ env:
 jobs:
 
     build-and-push-image:
-        runs-on: docker-runner
+        runs-on: ubuntu-latest
 
         steps:
             - name: ${{github.event.inputs.id}}
