@@ -1,0 +1,44 @@
+name: Build and Push Image
+
+
+on:
+    workflow_dispatch:
+      branches:
+        - main
+      inputs:
+        id:
+          description: 'run identifier'
+          required: false
+
+env:
+    DOCKER_IMAGE_NAME: sheriffexcel/signoz-react
+
+jobs:
+
+    build-and-push-image:
+        runs-on: docker-runner
+
+        steps:
+            - name: ${{github.event.inputs.id}}
+              run: echo run identifier ${{ inputs.id }}
+            
+            - name: Checkout Codebase
+              uses: actions/checkout@v4
+
+            - uses: benjlevesque/short-sha@v2.2
+              name: Get short sha
+              id: short-sha
+              with:
+                length: 6
+
+            - uses: mr-smithers-excellent/docker-build-push@v6
+              name: Build & push Docker image
+              with:
+                image: ${{ env.DOCKER_IMAGE_NAME }}
+                tags: ${{ steps.short-sha.outputs.sha }}
+                registry: docker.io
+                dockerfile: Dockerfile
+                username: ${{ secrets.DOCKER_USERNAME }}
+                password: ${{ secrets.DOCKER_PASSWORD }}
+            
+            
