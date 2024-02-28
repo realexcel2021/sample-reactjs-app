@@ -14,7 +14,7 @@ const resource = new Resource({ "service.name": serviceName });
 const provider = new WebTracerProvider({ resource });
 
 const collector = new OTLPTraceExporter({
-  url: "https://signoz.onemedtest.com/v1/traces/",
+  url: "http://my-release-signoz-otel-collector.platform.svc.cluster.local:4317/v1/traces",
   // headers: {
   //   "signoz-access-token": "SigNoz-Cloud-Ingestion-Token-HERE"
   // }
