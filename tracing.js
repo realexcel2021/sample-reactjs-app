@@ -25,13 +25,15 @@ const sdk = new opentelemetry.NodeSDK({
 try {
    sdk.start()
 
+   console.log("started tracing.......")
+
 // gracefully shut down the SDK on process exit
-process.on('SIGTERM', () => {
-   sdk.shutdown()
- .then(() => console.log('Tracing terminated'))
- .catch((error) => console.log('Error terminating tracing', error))
- .finally(() => process.exit(0));
- });
+   process.on('SIGTERM', () => {
+      sdk.shutdown()
+   .then(() => console.log('Tracing terminated'))
+   .catch((error) => console.log('Error terminating tracing', error))
+   .finally(() => process.exit(0));
+   });
 }
 catch {
    console.log("Unable to load tracing.js")
