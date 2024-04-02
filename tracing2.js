@@ -20,7 +20,7 @@ const {
 // Create a new instance of JaegerExporter with the options
 const exporter = new JaegerExporter({
     serviceName: "Sample-app",
-    host: "http://otel-opentelemetry-collector.monitoring.svc.cluster.local:4317/v1/traces", // optional, can be set by OTEL_EXPORTER_JAEGER_AGENT_HOST
+    host: "http://otel-opentelemetry-collector.monitoring.svc.cluster.local:4317", // optional, can be set by OTEL_EXPORTER_JAEGER_AGENT_HOST
     // port: 16686 // optional
 });
 
